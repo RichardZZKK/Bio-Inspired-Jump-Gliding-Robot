@@ -8,9 +8,16 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 
 -Jump Solution Selection: After comparing different jump actuation mechanisms, we found that biomimetic legged or complex multi-link jumping structures, are not suitable for our intended application. These mechanisms are generally too heavy and not conducive to achieving lightweight design and effective gliding. Based on further research, we selected the carbon fiber strip compression jumping mechanism, which best meets our requirements for both performance and weight.
 
-![image](https://github.com/user-attachments/assets/2d52d127-d98d-43d5-9bd7-6597bf022ba3)
-![image](https://github.com/user-attachments/assets/4d4eb47f-471b-48c0-a799-86d488b92b12)
-![image](https://github.com/user-attachments/assets/55d0b6e8-46c2-4541-bafa-6aa68f54a510)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2d52d127-d98d-43d5-9bd7-6597bf022ba3" width="400"/>
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4d4eb47f-471b-48c0-a799-86d488b92b12" width="400"/>
+</p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/55d0b6e8-46c2-4541-bafa-6aa68f54a510" width="400"/>
+</p>
+
 
 
 
