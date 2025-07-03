@@ -27,10 +27,10 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 </table>
 </div>
 
-<div align="center">
-
-</div>
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6e41ed2f-ce66-4a4c-a529-350ee9974658?raw=true" />
+</p>
+  
 - Release Mechanism: The release mechanism works by using an electromagnetic clutch* to quickly connect or disconnect the winch from the motor. During energy storage, the motor—through the engaged clutch—pulls the UHMWPE line to stretch the carbon fiber strip and store elastic energy. When the target tension is reached, power to the clutch is cut, instantly disconnecting the winch from the motor. This allows the stored energy to be released rapidly, enabling the jump, while protecting the motor from any sudden forces or backlash during the release.
 <div align="center">
 <table>
