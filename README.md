@@ -14,12 +14,18 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 
 - Jump Solution Selection: After comparing different jump actuation mechanisms, we found that biomimetic legged or complex multi-link jumping structures, are not suitable for our intended application. These mechanisms are generally too heavy and not conducive to achieving lightweight design and effective gliding. Based on further research, we selected the carbon fiber strip compression jumping mechanism, which best meets our requirements for both performance and weight.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/2d52d127-d98d-43d5-9bd7-6597bf022ba3" width="400"/>
-</p>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/4d4eb47f-471b-48c0-a799-86d488b92b12" width="400"/>
-</p>
+<div align="center">
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/2d52d127-d98d-43d5-9bd7-6597bf022ba3" width="300"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/4d4eb47f-471b-48c0-a799-86d488b92b12" width="300"/>
+    </td>
+  </tr>
+</table>
+</div>
 
 
 - Release Mechanism: The release mechanism works by using an electromagnetic clutch* to quickly connect or disconnect the winch from the motor. During energy storage, the motor—through the engaged clutch—pulls the UHMWPE line to stretch the carbon fiber strip and store elastic energy. When the target tension is reached, power to the clutch is cut, instantly disconnecting the winch from the motor. This allows the stored energy to be released rapidly, enabling the jump, while protecting the motor from any sudden forces or backlash during the release.
