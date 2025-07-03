@@ -4,7 +4,9 @@ Inspired by recent studies of planetary jump robots and bio-inspired gliding mec
 
 Our main goal was to design a robot capable of repeated jumps and gliding, expanding its operational range and adaptability. Our innovation lies in the integration of a carbon fiber strip-powered jumping mechanism with a deployable wing gliding system. Unlike prior robots that typically perform single-use or limited jumps, and compared to conventional flying robots, our design offers higher reliability and significantly lower energy consumption. So far, we detail the system architecture, mathematical modeling, and challenges encountered in the realization of this hybrid jump-gliding robot.
 
-# So far, we have completed the following work...(And further tasks are ongoing and being continuously updated until the project is completed.)
+# So far, we have completed the following work...
+
+<span style="font-size:20px;">And further tasks are ongoing and being continuously updated until the project is completed.</span>
 
 -Jump Solution Selection: After comparing different jump actuation mechanisms, we found that biomimetic legged or complex multi-link jumping structures, are not suitable for our intended application. These mechanisms are generally too heavy and not conducive to achieving lightweight design and effective gliding. Based on further research, we selected the carbon fiber strip compression jumping mechanism, which best meets our requirements for both performance and weight.
 
@@ -28,7 +30,7 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
     </td>
   </tr>
 </table>
-
+</div>
 
 
 -Design of Jump Energy Storage and Release: Utilizes a winch motor to tension a Ultra-high-molecular-weight polyethylene(UHMWPE) line attached to carbon fiber strips, storing elastic potential energy. 
@@ -43,6 +45,7 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
     </td>
   </tr>
 </table>
+</div>
 
 
 - Design of Gliding Mechanism: Wings are deployed at the apex of each jump, either by electronic control or mechanical triggering.
@@ -58,6 +61,7 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
     </td>
   </tr>
 </table>
+</div>
 
 <div align="center">
 <table>
@@ -70,13 +74,13 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
     </td>
   </tr>
 </table>
-
+</div>
 
 # Ongoing efforts focus on: 
-- Improving mechanical efficiency and alignment, 
-- Optimizing the wing deployment strategy, 
-- Designing and testing closed-loop feedback and control, 
-- Validating the robot in more varied and realistic test scenarios.
+* Improving mechanical efficiency and alignment, 
+* Optimizing the wing deployment strategy, 
+* Designing and testing closed-loop feedback and control, 
+* Validating the robot in more varied and realistic test scenarios.
 
 
 Authors:
