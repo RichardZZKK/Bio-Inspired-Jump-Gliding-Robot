@@ -14,33 +14,62 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4d4eb47f-471b-48c0-a799-86d488b92b12" width="400"/>
 </p>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/55d0b6e8-46c2-4541-bafa-6aa68f54a510" width="400"/>
-</p>
-
-
 
 
 -Release Mechanism: The release mechanism works by using an electromagnetic clutch* to quickly connect or disconnect the winch from the motor. During energy storage, the motor—through the engaged clutch—pulls the UHMWPE line to stretch the carbon fiber strip and store elastic energy. When the target tension is reached, power to the clutch is cut, instantly disconnecting the winch from the motor. This allows the stored energy to be released rapidly, enabling the jump, while protecting the motor from any sudden forces or backlash during the release.
+<div align="center">
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/694cafcb-d208-42c9-b6f4-f1b8d906e2ee" width="300"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/488834de-d14c-49c0-b084-9160e2fba12f" width="300"/>
+    </td>
+  </tr>
+</table>
 
-![image](https://github.com/user-attachments/assets/694cafcb-d208-42c9-b6f4-f1b8d906e2ee)
-![image](https://github.com/user-attachments/assets/488834de-d14c-49c0-b084-9160e2fba12f)
 
 
 -Design of Jump Energy Storage and Release: Utilizes a winch motor to tension a Ultra-high-molecular-weight polyethylene(UHMWPE) line attached to carbon fiber strips, storing elastic potential energy. 
-
-![image](https://github.com/user-attachments/assets/f08731ea-73bc-4b44-99e7-35be05216e1c)
-![image](https://github.com/user-attachments/assets/ce0810af-a8b4-4da1-b6ea-74f0b9d5a3af)
+<div align="center">
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/f08731ea-73bc-4b44-99e7-35be05216e1c" width="300"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/ce0810af-a8b4-4da1-b6ea-74f0b9d5a3af" width="300"/>
+    </td>
+  </tr>
+</table>
 
 
 - Design of Gliding Mechanism: Wings are deployed at the apex of each jump, either by electronic control or mechanical triggering.
 *An electromagnetic clutch engages or disengages power transmission between two shafts by using electromagnetic force. When current is applied, the clutch connects the shafts; when current is removed, the connection is released.
+<div align="center">
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/23fe3522-b2e0-4b5b-9c85-6e9ccd3a104b" width="300"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/8002e049-6982-4139-b69c-9269329fd793" width="300"/>
+    </td>
+  </tr>
+</table>
 
-![image](https://github.com/user-attachments/assets/23fe3522-b2e0-4b5b-9c85-6e9ccd3a104b)
-![image](https://github.com/user-attachments/assets/8002e049-6982-4139-b69c-9269329fd793)
-
-![image](https://github.com/user-attachments/assets/1dbb64f0-a2ee-43ea-8911-7763eb12b03b)
-![image](https://github.com/user-attachments/assets/e19473eb-4e7b-43fd-a649-bb6782251436)
+<div align="center">
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/1dbb64f0-a2ee-43ea-8911-7763eb12b03b" width="300"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/e19473eb-4e7b-43fd-a649-bb6782251436" width="300"/>
+    </td>
+  </tr>
+</table>
 
 
 # Ongoing efforts focus on: 
