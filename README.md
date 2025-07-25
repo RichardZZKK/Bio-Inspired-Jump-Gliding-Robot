@@ -145,11 +145,11 @@ Below is an annotated overview of `Jump-Gliding-Robot.ino`.
 #include "include.h"
 #include "SerialServo.h"
 ```
-*ArduinoBLE: BLE Low Energy support
-*Arduino_BMI270_BMM150: On‑board 9‑axis IMU (BMI270 + BMM150)
-*Wire: I²C bus for IMU
-*Servo: Hobby servo control
-*include.h / SerialServo.h: Project‑specific macros & Lobot servo driver
+* ArduinoBLE: BLE Low Energy support
+* Arduino_BMI270_BMM150: On‑board 9‑axis IMU (BMI270 + BMM150)
+* Wire: I²C bus for IMU
+* Servo: Hobby servo control
+* include.h / SerialServo.h: Project‑specific macros & Lobot servo driver
 
 ### 2. Global Objects & Configuration
 ```cpp
@@ -164,11 +164,11 @@ const int clutchPin  = 4;       // MOSFET gate for 24 V clutch
 const long interval  = 50;      // IMU send interval (ms)
 unsigned long previousMillis = 0;
 ```
-*servo1/servo2: Reserved for future gliding control
-*BLEService & Characteristics:
-*2A19 (write) for receiving commands
-*2A58 (notify) for streaming IMU data
-*Pins & Timing: Define motor/clutch pins and non‑blocking timer
+* servo1/servo2: Reserved for future gliding control
+* BLEService & Characteristics:
+* 2A19 (write) for receiving commands
+* 2A58 (notify) for streaming IMU data
+* Pins & Timing: Define motor/clutch pins and non‑blocking timer
 
 ### 3. setup() — Initialization
 ```cpp
@@ -194,11 +194,11 @@ void setup() {
   if (!IMU.begin()) while (1);
 }
 ```
-*Serial & I²C: Serial1 for debugging/servo, Wire for IMU
-*Servo Pins: Attach D9/D10
-*Motor/Clutch: Initialize outputs to LOW
-*BLE: Start, configure service & characteristics, begin advertising
-*IMU: Begin BMI270/BMM150 sensor
+* Serial & I²C: Serial1 for debugging/servo, Wire for IMU
+* Servo Pins: Attach D9/D10
+* Motor/Clutch: Initialize outputs to LOW
+* BLE: Start, configure service & characteristics, begin advertising
+* IMU: Begin BMI270/BMM150 sensor
 
 ### 4. sendIMUData() — Packaging & Sending IMU
 ```cpp
@@ -223,9 +223,9 @@ void sendIMUData() {
   imuDataCharacteristic.writeValue(imuData, 36);
 }
 ```
-*Selective Reads: Only read available axes
-*Data Layout: ax, ay, az, gx, gy, gz, mx, my, mz (4 bytes each)
-*Notify: Send 36 bytes over BLE
+* Selective Reads: Only read available axes
+* Data Layout: ax, ay, az, gx, gy, gz, mx, my, mz (4 bytes each)
+* Notify: Send 36 bytes over BLE
 
 ### 5. loop() — Main Command Handler
 ```cpp
@@ -269,10 +269,10 @@ void loop() {
   }
 }
 ```
-*Checks BLE connection
-*Non‑blocking command read & dispatc
-*Jump sequence, test mode, future gliding
-*Periodic IMU data send
+* Checks BLE connection
+* Non‑blocking command read & dispatc
+* Jump sequence, test mode, future gliding
+* Periodic IMU data send
 
 # Ongoing efforts focus on: 
 * Improving mechanical efficiency and alignment, 
