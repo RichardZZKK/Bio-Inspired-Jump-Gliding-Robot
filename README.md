@@ -89,6 +89,59 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 </table>
 </div>
 
+## Electronics Design
+
+### MCU & Power
+
+- **MCU**: Arduino Nano 33 BLE Sense Rev2 (NINA B306 + Cortex‑M4F)  
+- **Input Voltage**: 3.3 V (all I/O 3.3 V TTL)  
+- **Key Specs**: 64 MHz, 1 MB Flash + 256 kB RAM, BLE 5.0, onboard DC DC, BMI270/BMM150 IMU
+
+### Bill of Materials
+
+| # | Component                                    |
+|---|----------------------------------------------|
+| 1 | Arduino Nano 33 BLE Sense Rev2               |
+| 2 | 6 V DC motor + MOSFET driver                 |
+| 3 | 24 V electromagnetic clutch + MOSFET driver  |
+| 4 | 2 × Hobby servos                             |
+| 5 | Power modules (3.3 V, 6 V, 24 V rails)       |
+| 6 | Assorted wiring                              |
+
+
+### Wiring Diagram
+
+![Schematic][schematic]
+
+[schematic]: docs/schematic.png
+
+### Pin Assignment
+
+| Function               | Arduino Pin  | Description                                 |
+|------------------------|--------------|---------------------------------------------|
+| Motor MOSFET Gate      | D3           | Drives 6 V DC motor                         |
+| Clutch MOSFET Gate     | D4           | Drives 24 V electromagnetic clutch          |
+| Servo PWM Signals      | D9, D10      | Hobby servo control (future gliding)        |
+| Limit Switch Inputs    | D2, D5…      | End‑stop switches                           |
+| I²C (BMI270 IMU)       | SDA(A4), SCL(A5) | On‑board 9‑axis sensor                  |
+| BLE UART               | Serial1      | UART on NINA B306 (debug/servo)             |
+| Power & Ground         | VIN, GND     | 3.3 V input & common ground                 |
+
+---
+
+## Code Breakdown
+
+Below is an annotated overview of `src/main.ino`.  
+
+### 1. Include Statements & Libraries
+
+```cpp
+#include <ArduinoBLE.h>
+#include "Arduino_BMI270_BMM150.h"
+#include <Wire.h>
+#include <Servo.h>
+#include "include.h"
+#include "SerialServo.h"
 # Ongoing efforts focus on: 
 * Improving mechanical efficiency and alignment, 
 * Optimizing the wing deployment strategy, 
