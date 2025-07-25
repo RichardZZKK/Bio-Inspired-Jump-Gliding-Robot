@@ -131,7 +131,15 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 
 ---
 
-## Code Breakdown
+## Code Overview
+# File Structure
+
+```plaintext
+src/
+├── include.h              # Macros & Lobot protocol constants
+├── SerialServo.h          # Lobot serial‑servo driver implementations
+└── Jump-Gliding-Robot.ino # Main application entrypoint
+```
 
 Below is an annotated overview of `Jump-Gliding-Robot.ino`.  
 
