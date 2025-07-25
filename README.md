@@ -136,9 +136,10 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 
 ```plaintext
 src/
-├── Jump-Gliding-Robot.ino    # Main application entrypoint
-├── include.h                 # Macros & Lobot protocol constants
-└── SerialServo.h             # Lobot serial‑servo driver implementations
+└── Jump-Gliding-Robot/
+    ├── Jump-Gliding-Robot.ino    # Main application entrypoint
+    ├── include.h                 # Macros & Lobot protocol constants
+    └── SerialServo.h             # Lobot serial‑servo driver implementations
 ```
 
 Below is an annotated overview of `Jump-Gliding-Robot.ino`.  
