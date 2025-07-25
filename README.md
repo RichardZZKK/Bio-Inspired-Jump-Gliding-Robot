@@ -131,8 +131,8 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 
 ---
 
-## Code Overview
-# File Structure
+### Code Overview
+#### File Structure
 
 ```plaintext
 src/
@@ -143,7 +143,7 @@ src/
 
 Below is an annotated overview of `Jump-Gliding-Robot.ino`.  
 
-### 1. Include Statements & Libraries
+#### 1. Include Statements & Libraries
 
 ```cpp
 #include <ArduinoBLE.h>
@@ -159,7 +159,7 @@ Below is an annotated overview of `Jump-Gliding-Robot.ino`.
 * Servo: Hobby servo control
 * include.h / SerialServo.h: Project‑specific macros & Lobot servo driver
 
-### 2. Global Objects & Configuration
+#### 2. Global Objects & Configuration
 ```cpp
 Servo servo1, servo2;
 
@@ -178,7 +178,7 @@ unsigned long previousMillis = 0;
 * 2A58 (notify) for streaming IMU data
 * Pins & Timing: Define motor/clutch pins and non‑blocking timer
 
-### 3. setup() — Initialization
+#### 3. setup() — Initialization
 ```cpp
 void setup() {
   Serial1.begin(115200);
@@ -208,7 +208,7 @@ void setup() {
 * BLE: Start, configure service & characteristics, begin advertising
 * IMU: Begin BMI270/BMM150 sensor
 
-### 4. sendIMUData() — Packaging & Sending IMU
+#### 4. sendIMUData() — Packaging & Sending IMU
 ```cpp
 void sendIMUData() {
   float ax, ay, az, gx, gy, gz, mx, my, mz;
@@ -235,7 +235,7 @@ void sendIMUData() {
 * Data Layout: ax, ay, az, gx, gy, gz, mx, my, mz (4 bytes each)
 * Notify: Send 36 bytes over BLE
 
-### 5. loop() — Main Command Handler
+#### 5. loop() — Main Command Handler
 ```cpp
 void loop() {
   BLEDevice central = BLE.central();
