@@ -95,25 +95,27 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 
 - **MCU**: Arduino Nano 33 BLE Sense Rev2 (NINA B306 + Cortex‑M4F)  
 - **Input Voltage**: 3.3 V (all I/O 3.3 V TTL)  
-- **Key Specs**: 64 MHz, 1 MB Flash + 256 kB RAM, BLE 5.0, onboard DC DC, BMI270/BMM150 IMU
+- **Key Specs**: 64 MHz, 1 MB Flash + 256 kB RAM; BLE 5.0; onboard DC‑DC converter; BMI270/BMM150 9‑axis IMU  
+- **Power Supply**:  
+  - **Motor**: 2 × 3.7 V, 100 mAh Li‑ion battery packs in series  
+  - **Clutch**: 5 × 3.7 V, 100 mAh Li‑ion battery packs in series  
+  - **Board**: 1 × 3.7 V, 100 mAh Li‑ion battery pack
 
 ### Bill of Materials
 
-| # | Component                                    |
-|---|----------------------------------------------|
-| 1 | Arduino Nano 33 BLE Sense Rev2               |
-| 2 | 6 V DC motor + MOSFET driver                 |
-| 3 | 24 V electromagnetic clutch + MOSFET driver  |
-| 4 | 2 × Hobby servos                             |
-| 5 | Power modules (3.3 V, 6 V, 24 V rails)       |
-| 6 | Assorted wiring                              |
-
+| # | Component                                                      |
+|---|----------------------------------------------------------------|
+| 1 | Arduino Nano 33 BLE Sense Rev2                                 |
+| 2 | On‑board 9‑axis IMU (BMI270 + BMM150)                          |
+| 3 | 6 V DC motor + MOSFET driver                                   |
+| 4 | 24 V electromagnetic clutch + MOSFET driver                    |
+| 5 | 2 × Hobby servos                                               |
+| 6 | Power modules (3.3 V, 6 V, 24 V rails)                         |
+| 7 | Assorted wiring                                                |
 
 ### Wiring Diagram
 
-![Schematic][schematic]
 
-[schematic]: docs/schematic.png
 
 ### Pin Assignment
 
@@ -131,7 +133,7 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 
 ## Code Breakdown
 
-Below is an annotated overview of `src/main.ino`.  
+Below is an annotated overview of `Jump-Gliding-Robot.ino`.  
 
 ### 1. Include Statements & Libraries
 
@@ -142,6 +144,89 @@ Below is an annotated overview of `src/main.ino`.
 #include <Servo.h>
 #include "include.h"
 #include "SerialServo.h"
+```
+ArduinoBLE: BLE Low Energy support
+Arduino_BMI270_BMM150: On‑board 9‑axis IMU (BMI270 + BMM150)
+Wire: I²C bus for IMU
+Servo: Hobby servo control
+include.h / SerialServo.h: Project‑specific macros & Lobot servo driver
+
+### 2. Global Objects & Configuration
+```cpp
+Servo servo1, servo2;
+
+BLEService sensorService("180F");
+BLEByteCharacteristic servoCommandCharacteristic("2A19", BLEWrite);
+BLECharacteristic imuDataCharacteristic("2A58", BLENotify, 36);
+
+const int motorPin   = 3;       // MOSFET gate for 6 V motor
+const int clutchPin  = 4;       // MOSFET gate for 24 V clutch
+const long interval  = 50;      // IMU send interval (ms)
+unsigned long previousMillis = 0;
+```
+servo1/servo2: Reserved for future gliding control
+BLEService & Characteristics:
+2A19 (write) for receiving commands
+2A58 (notify) for streaming IMU data
+Pins & Timing: Define motor/clutch pins and non‑blocking timer
+
+### 3. setup() — Initialization
+```cpp
+void setup() {
+  Serial1.begin(115200);
+  Wire.begin();
+  servo1.attach(9);
+  servo2.attach(10);
+
+  pinMode(motorPin, OUTPUT);
+  pinMode(clutchPin, OUTPUT);
+  digitalWrite(motorPin, LOW);
+  digitalWrite(clutchPin, LOW);
+
+  if (!BLE.begin()) while (1);
+  BLE.setLocalName("Nano33BLE_IMU");
+  BLE.setAdvertisedService(sensorService);
+  sensorService.addCharacteristic(servoCommandCharacteristic);
+  sensorService.addCharacteristic(imuDataCharacteristic);
+  BLE.addService(sensorService);
+  BLE.advertise();
+
+  if (!IMU.begin()) while (1);
+}
+```
+Serial & I²C: Serial1 for debugging/servo, Wire for IMU
+Servo Pins: Attach D9/D10
+Motor/Clutch: Initialize outputs to LOW
+BLE: Start, configure service & characteristics, begin advertising
+IMU: Begin BMI270/BMM150 sensor
+
+### 4. sendIMUData() — Packaging & Sending IMU
+```cpp
+void sendIMUData() {
+  float ax, ay, az, gx, gy, gz, mx, my, mz;
+
+  if (IMU.accelerationAvailable())    IMU.readAcceleration(ax, ay, az);
+  if (IMU.gyroscopeAvailable())       IMU.readGyroscope(gx, gy, gz);
+  if (IMU.magneticFieldAvailable())   IMU.readMagneticField(mx, my, mz);
+
+  byte imuData[36];
+  memcpy(imuData +  0, &ax, 4);
+  memcpy(imuData +  4, &ay, 4);
+  memcpy(imuData +  8, &az, 4);
+  memcpy(imuData + 12, &gx, 4);
+  memcpy(imuData + 16, &gy, 4);
+  memcpy(imuData + 20, &gz, 4);
+  memcpy(imuData + 24, &mx, 4);
+  memcpy(imuData + 28, &my, 4);
+  memcpy(imuData + 32, &mz, 4);
+
+  imuDataCharacteristic.writeValue(imuData, 36);
+}
+```
+Selective Reads: Only read available axes
+Data Layout: ax, ay, az, gx, gy, gz, mx, my, mz (4 bytes each)
+Notify: Send 36 bytes over BLE
+
 # Ongoing efforts focus on: 
 * Improving mechanical efficiency and alignment, 
 * Optimizing the wing deployment strategy, 
