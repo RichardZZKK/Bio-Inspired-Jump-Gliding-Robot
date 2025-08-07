@@ -113,10 +113,6 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 | 6 | Power modules (3.3 V, 6 V, 24 V rails)                         |
 | 7 | Assorted wiring                                                |
 
-### Wiring Diagram
-
-
-
 ### Pin Assignment
 
 | Function               | Arduino Pin  | Description                                 |
