@@ -12,6 +12,8 @@ Our main goal was to design a robot capable of repeated jumps and gliding, expan
 
 [Interm Technical Report 01](https://github.com/RichardZZKK/Bio-Inspired-Jump-Gliding-Robot/blob/main/Interim%20Technical%20Report%2001.pdf)
 
+[Final PPT](https://github.com/RichardZZKK/Bio-Inspired-Jump-Gliding-Robot/blob/main/Final%20Presentation.pdf)
+
 - Jump Solution Selection: After comparing different jump actuation mechanisms, we found that biomimetic legged or complex multi-link jumping structures, are not suitable for our intended application. These mechanisms are generally too heavy and not conducive to achieving lightweight design and effective gliding. Based on further research, we selected the carbon fiber strip compression jumping mechanism, which best meets our requirements for both performance and weight.
 
 <div align="center">
